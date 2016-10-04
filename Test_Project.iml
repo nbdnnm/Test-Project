@@ -63,10 +63,10 @@
     <orderEntry type="library" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.8" level="project" />
     <orderEntry type="library" name="Maven: ru.stqa.selenium:webdriver-factory:3.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.8" level="project" />
+    <orderEntry type="library" name="Maven: org.testng:testng:6.8" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
+    <orderEntry type="library" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.htmlelements:htmlelements-all:1.17" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.htmlelements:htmlelements-java:1.17" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.htmlelements:htmlelements-matchers:1.17" level="project" />

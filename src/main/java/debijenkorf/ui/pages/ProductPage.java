@@ -12,7 +12,10 @@ public class ProductPage extends BasePage {
     private Select productSelector;
 
     @FindBy(xpath = "//button[@class='Tappable-inactive dbk-btn dbk-btn_primary dbk-btn_justified']")
-    private Button inCart;
+    private Button addInBasket;
+
+    @FindBy(xpath = "//button[@class='Tappable-inactive dbk-btn dbk-btn_primary']")
+    private Button goToBasket;
 
     public ProductPage() {
         super();
@@ -26,8 +29,14 @@ public class ProductPage extends BasePage {
 
     @Step
     public ProductPage addItemInCart() {
-        inCart.click();
+        addInBasket.click();
         return this;
+    }
+
+    @Step
+    public BasketPage clickGoToCart() {
+        goToBasket.click();
+        return new BasketPage();
     }
 
 

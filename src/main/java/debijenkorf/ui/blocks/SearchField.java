@@ -4,6 +4,8 @@ import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
+//search field element, would be repeatedly added on few pages
+
 public class SearchField extends HtmlElement {
 
     @FindBy(xpath = ".//input")

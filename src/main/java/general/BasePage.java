@@ -12,7 +12,8 @@ public abstract class BasePage {
 
     protected String url;
 
-    Capabilities chrome = DesiredCapabilities.chrome(); //.chrome();
+    Capabilities chrome = DesiredCapabilities.chrome();
+    //Capabilities firefox = DesiredCapabilities.firefox();
 
     public BasePage() {
         System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");

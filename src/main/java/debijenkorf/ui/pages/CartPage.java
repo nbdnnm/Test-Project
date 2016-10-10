@@ -8,22 +8,26 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.List;
 
-public class BasketPage extends BasePage {
+public class CartPage extends BasePage {
 
     private static String ITEM_ARTICLE_PATH = "//p[@class='dbk-paragraph hidden-xs']";
 
     @FindBy(xpath = "//li[@class='dbk-productlist-item']")
-    private List<WebElement> basketProductItems;
+    private List<WebElement> cartProductItems;
 
-    public BasketPage() {
+    public CartPage() {
         super();
     }
 
     @Step
-    public boolean isArticleInBasket(String itemArticle) {
-        return basketProductItems.stream()
+    public boolean isArticleInCart(String itemArticle) {
+        return cartProductItems.stream()
                 .anyMatch(e -> e.findElement(By.xpath(ITEM_ARTICLE_PATH))
                         .getText().contains(itemArticle));
     }
 
+    @Step
+    public boolean isAnythingInCart() {
+        return !cartProductItems.isEmpty();
+    }
 }

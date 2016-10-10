@@ -28,15 +28,27 @@ public class ProductPage extends BasePage {
     }
 
     @Step
+    public ProductPage openProductList() {
+        productSelector.click();
+        return this;
+    }
+
+    @Step
+    public ProductPage selectFirstItem() {
+        productSelector.selectByIndex(1);
+        return this;
+    }
+
+    @Step
     public ProductPage addItemInCart() {
         addInBasket.click();
         return this;
     }
 
     @Step
-    public BasketPage clickGoToCart() {
+    public CartPage clickGoToCart() {
         goToBasket.click();
-        return new BasketPage();
+        return new CartPage();
     }
 
 

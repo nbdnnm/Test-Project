@@ -1,4 +1,4 @@
-package debijenkorf.TestData;
+package debijenkorf.test.TestData;
 
 import org.testng.annotations.DataProvider;
 

@@ -5,7 +5,9 @@ import general.utils.PropertyLoader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import reactjs.ui.blocks.ReactJSTable;
+import ru.yandex.qatools.allure.annotations.Step;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExamplePage extends BasePage {
@@ -19,39 +21,22 @@ public class ExamplePage extends BasePage {
         url = examplePageAddress;
     }
 
-    public String takeOneOfFirstName() {
-        return table.getColumnByIndex(1).get(3).getText();
+    @Step
+    public String takeFirstName(int lineNumber) {
+        lineNumber--;
+        return table.getColumnByIndex(Column.First_Name.getIndex()).get(lineNumber).getText();
     }
 
-    public List<String> getCellValueByFirstName(String firstName, String columnName) {
-        Integer firstNameColumnIndex = null;
-        Integer columnNameIndex = null;
-        List<WebElement> firstNameValues = null;
-        List<WebElement> columnNameValues = null;
-        List<Integer> rowIndexWithSufficientName = null;
-        List<String> columnNameFromTable = table.getHeadingsAsString();
-        List<String> results = null;
+    public List<String> getCellValueByFirstName(String firstName, Column columnName) {
+        List<String> results = new ArrayList<>();
+        List<WebElement> targetColumn = table.getColumnByIndex(columnName.getIndex());
+        List<WebElement> firstNameColumn = table.getColumnByIndex(Column.First_Name.getIndex());
+        int tableSize = table.getRows().size();
 
-        //let's find the indexes of First name column  and the column from which we want to take value
-        for (int i = 0; i < columnNameFromTable.size(); i++) {
-            if (firstName.equals(columnNameFromTable)) {
-                firstNameColumnIndex = i;
-            } else if (columnName.equals(columnNameFromTable)) {
-                columnNameIndex = i;
+        for (int i = 0; i < tableSize; i++) {
+            if (firstName.equals(firstNameColumn.get(i).getText())) {
+                results.add(targetColumn.get(i).getText());
             }
-        }
-
-        //take indexes of rows where First name is equal to which we are looking for
-        firstNameValues = table.getColumnByIndex(firstNameColumnIndex);
-        for (int i = 0; i < firstNameValues.size(); i++) {
-            if (firstName.equals(firstNameValues.get(i).getText())) {
-                rowIndexWithSufficientName.add(Integer.valueOf(i));
-            }
-        }
-
-        //take the column value from rows where First name what we are looking for
-        for (int i = 0; i < rowIndexWithSufficientName.size(); i++) {
-            results.add(columnNameValues.get(i).getText());
         }
         return results;
     }
@@ -67,4 +52,22 @@ public class ExamplePage extends BasePage {
         return this;
     }
 
+    public enum Column {
+        First_Name(1),
+        Zip_Code(5);
+        private final int index;
+
+        Column(int index) {
+            this.index = index;
+        }
+
+        public int getIndex() {
+            return this.index;
+        }
+
+        public String getColumnName() {
+            return this.name().replace("_", "");
+        }
+
+    }
 }

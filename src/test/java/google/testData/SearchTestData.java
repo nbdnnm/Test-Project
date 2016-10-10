@@ -1,4 +1,4 @@
-package google.test.testData;
+package google.testData;
 
 import org.testng.annotations.DataProvider;
 

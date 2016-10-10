@@ -9,13 +9,14 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <aspectj.version>1.7.4</aspectj.version>
+        <aspectj.version>1.8.5</aspectj.version>
         <allure.version>1.4.23.HOTFIX1</allure.version>
         <htmlelements.version>1.17</htmlelements.version>
         <webdriver-factory.version>3.0</webdriver-factory.version>
         <selenium.version>2.53.1</selenium.version>
         <testng.version>6.8</testng.version>
         <ngwebdriwer.version>0.9.6</ngwebdriwer.version>
+        <ashot.version>1.5.2</ashot.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,11 @@
                     <artifactId>junit</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>${ashot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.paulhammant</groupId>

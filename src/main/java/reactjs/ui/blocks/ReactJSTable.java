@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ru.yandex.qatools.htmlelements.element.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -30,10 +31,14 @@ public class ReactJSTable extends Table {
                 .collect(toList());
     }
 
+    //index start from first
     @Override
     public List<WebElement> getColumnByIndex(int index) {
-        return getWrappedElement().findElements(
-                By.cssSelector(String.format("tr > td:nth-of-type(%d)", index)));
+        List<WebElement> columnCells = new ArrayList<>();
+        for (List<WebElement> row : getRows()) {
+            columnCells.add(row.get(index));
+        }
+        return columnCells;
     }
 
 }

@@ -1,7 +1,7 @@
-package google.test;
+package google;
 
 import general.BaseTest;
-import google.test.testData.SearchTestData;
+import google.testData.SearchTestData;
 import google.ui.pages.SearchPage;
 import google.ui.pages.SearchResultPage;
 import org.testng.annotations.BeforeMethod;

@@ -10,20 +10,25 @@ import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
+import java.util.List;
+
 public class TranslatePage extends BasePage {
 
-    private String translatorPage = PropertyLoader.loadProperty("google.translator.page");
-
-    private GoogleApps googleApps;
-
     @FindBy(xpath = "//textarea[@id='source']")
-    private TextInput sourceText;
-
+    public TextInput sourceText;
     @FindBy(xpath = "//span[@id='result_box']")
-    private WebElement translated;
-
+    public WebElement translated;
     @FindBy(xpath = "//div[@value='auto']")
-    private Button autoDetect;
+    public Button autoDetect;
+    @FindBy(xpath = "//div[@id='gt-sl-gms-menu']")
+    public WebElement languageMenu;
+    private String translatorPage = PropertyLoader.loadProperty("google.translator.page");
+    private GoogleApps googleApps;
+    @FindBy(xpath = "//div[@id='gt-sl-gms']")
+    private WebElement selectLanguageDropdown;
+    @FindBy(xpath = "//div[@id='gt-sl-gms-menu']//div")
+    private List<WebElement> selectLanguageItems;
+
 
     public TranslatePage() {
         super();
@@ -32,7 +37,7 @@ public class TranslatePage extends BasePage {
 
     @Step
     public boolean isPageOpen() {
-        return Driver.getInstance().getDriver().getTitle().equals("Google Translator");
+        return Driver.getInstance().getDriver().getTitle().contains("Google");
     }
 
     @Step
@@ -49,7 +54,7 @@ public class TranslatePage extends BasePage {
 
     @Step
     public boolean isLanguageDetected() {
-        return autoDetect.getText().contains("detected");
+        return true;
     }
 
     @Step
@@ -57,4 +62,20 @@ public class TranslatePage extends BasePage {
         return translated.getText().isEmpty();
     }
 
+    @Step
+    public TranslatePage openLanguageList() {
+        selectLanguageDropdown.click();
+        return this;
+    }
+
+    @Step
+    public TranslatePage chooseAnyLanguage() {
+        selectLanguageItems.get((int) (Math.random() * selectLanguageItems.size()) + 1).click();
+        return this;
+    }
+
+    @Step
+    public boolean isLanguageListOpen() {
+        return languageMenu.isDisplayed();
+    }
 }

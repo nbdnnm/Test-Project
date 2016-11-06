@@ -1,10 +1,13 @@
 package general.utils;
 
+import com.paulhammant.ngwebdriver.NgWebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import ru.stqa.selenium.factory.WebDriverPool;
 
 import java.util.concurrent.TimeUnit;
@@ -12,11 +15,18 @@ import java.util.concurrent.TimeUnit;
 public class Driver {
 
     private static Driver instance = null;
-    DesiredCapabilities capabilities;
-    private String driverType = PropertyLoader.loadProperty("driverType");
-    private String driverIncognito = PropertyLoader.loadProperty("driverIncognito");
-    private long driverImplicitWait = Long.parseLong(PropertyLoader.loadProperty("driverImplicitWait"));
-    private String chromeDriverPath = PropertyLoader.loadProperty("chromeDriverPath");
+    private final String driverType = PropertyLoader.loadProperty("driverType");
+    private final String driverMode = PropertyLoader.loadProperty("driverMode");
+    private final String hubAddress = PropertyLoader.loadProperty("hubAddress");
+    private final String driverIncognito = PropertyLoader.loadProperty("driverIncognito");
+    private final long driverImplicitWait = Long.parseLong(PropertyLoader.loadProperty("driverImplicitWait"));
+    private final String isAngularApp = PropertyLoader.loadProperty("isAngularApp");
+    private final String chromeDriverPath = PropertyLoader.loadProperty("chromeDriverPath");
+    private WebDriver driver;
+    private DesiredCapabilities capabilities;
+    private EventFiringWebDriver eDriver;
+    private WebDriverEventListenerForAngular webDriverEventListenerForAngular;
+    private NgWebDriver ngWebDriver;
 
     private Driver() {
     }
@@ -53,10 +63,28 @@ public class Driver {
                 capabilities = DesiredCapabilities.chrome();
                 break;
         }
-        WebDriverPool.DEFAULT.getDriver(capabilities).manage().timeouts().implicitlyWait(driverImplicitWait, TimeUnit.SECONDS);
+        if (driverMode.equals("remote")) {
+            driver = WebDriverPool.DEFAULT.getDriver(hubAddress, capabilities);
+        } else {
+            driver = WebDriverPool.DEFAULT.getDriver(capabilities);
+        }
+
+        if ("true".equals(isAngularApp)) {
+            ngWebDriver = new NgWebDriver((JavascriptExecutor) WebDriverPool.DEFAULT.getDriver(capabilities));
+            eDriver = new EventFiringWebDriver(driver);
+            webDriverEventListenerForAngular = new WebDriverEventListenerForAngular();
+            eDriver.register(webDriverEventListenerForAngular);
+            driver = eDriver;
+        }
+        driver.manage().timeouts().implicitlyWait(driverImplicitWait, TimeUnit.SECONDS);
+
     }
 
     public WebDriver getDriver() {
-        return WebDriverPool.DEFAULT.getDriver(capabilities);
+        return driver;
+    }
+
+    public void waitForAngular() {
+        ngWebDriver.waitForAngularRequestsToFinish();
     }
 }

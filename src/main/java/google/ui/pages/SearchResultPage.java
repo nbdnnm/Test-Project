@@ -1,7 +1,7 @@
 package google.ui.pages;
 
 import general.BasePage;
-import google.ui.blocks.ResultBlock;
+import google.ui.blocks.SearchResultBlock;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -10,13 +10,13 @@ import java.util.List;
 public class SearchResultPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='rc']")
-    private List<ResultBlock> resultBlock;
+    private List<SearchResultBlock> searchResultBlock;
 
     public SearchResultPage() {
         super();
     }
 
-    public ResultBlock getResultBlock(Integer num) {
-        return resultBlock.get(num);
+    public SearchResultBlock getResultBlock(Integer num) {
+        return searchResultBlock.get(num);
     }
 }

@@ -5,7 +5,7 @@ import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.element.TextBlock;
 
-public class ResultBlock extends HtmlElement {
+public class SearchResultBlock extends HtmlElement {
 
     @FindBy(xpath = ".//a")
     private Link resultLink;

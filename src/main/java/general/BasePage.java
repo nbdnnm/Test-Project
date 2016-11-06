@@ -10,12 +10,9 @@ public abstract class BasePage {
 
     protected String url;
 
-
-
     public BasePage() {
         PageFactory.initElements(new HtmlElementDecorator
                 (new HtmlElementLocatorFactory(Driver.getInstance().getDriver())), this);
-
     }
 
     //common method for all pages

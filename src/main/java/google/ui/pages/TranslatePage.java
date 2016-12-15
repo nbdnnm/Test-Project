@@ -22,7 +22,6 @@ public class TranslatePage extends BasePage {
     public Button autoDetect;
     @FindBy(xpath = "//div[@id='gt-sl-gms-menu']")
     public WebElement languageMenu;
-    private String translatorPage = PropertyLoader.loadProperty("google.translator.page");
     private GoogleApps googleApps;
     @FindBy(xpath = "//div[@id='gt-sl-gms']")
     private WebElement selectLanguageDropdown;
@@ -32,6 +31,7 @@ public class TranslatePage extends BasePage {
 
     public TranslatePage() {
         super();
+        String translatorPage = PropertyLoader.loadProperty("google.translator.page");
         url = translatorPage;
     }
 

@@ -15,7 +15,6 @@ public abstract class BasePage {
                 (new HtmlElementLocatorFactory(Driver.getInstance().getDriver())), this);
     }
 
-    //common method for all pages
     @Step
     public BasePage openPage() {
         Driver.getInstance().getDriver().get(url);

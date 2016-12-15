@@ -23,9 +23,6 @@ public class Driver {
     private final String isAngularApp = PropertyLoader.loadProperty("isAngularApp");
     private final String chromeDriverPath = PropertyLoader.loadProperty("chromeDriverPath");
     private WebDriver driver;
-    private DesiredCapabilities capabilities;
-    private EventFiringWebDriver eDriver;
-    private WebDriverEventListenerForAngular webDriverEventListenerForAngular;
     private NgWebDriver ngWebDriver;
 
     private Driver() {
@@ -40,6 +37,7 @@ public class Driver {
     }
 
     private void setDriverParameters() {
+        DesiredCapabilities capabilities;
         switch (driverType) {
             case "chrome":
                 capabilities = DesiredCapabilities.chrome();
@@ -71,8 +69,8 @@ public class Driver {
 
         if ("true".equals(isAngularApp)) {
             ngWebDriver = new NgWebDriver((JavascriptExecutor) WebDriverPool.DEFAULT.getDriver(capabilities));
-            eDriver = new EventFiringWebDriver(driver);
-            webDriverEventListenerForAngular = new WebDriverEventListenerForAngular();
+            EventFiringWebDriver eDriver = new EventFiringWebDriver(driver);
+            WebDriverEventListenerForAngular webDriverEventListenerForAngular = new WebDriverEventListenerForAngular();
             eDriver.register(webDriverEventListenerForAngular);
             driver = eDriver;
         }

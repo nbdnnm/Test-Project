@@ -9,8 +9,6 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 
 public class SearchPage extends BasePage {
 
-    private String searchPageAddress = PropertyLoader.loadProperty("google.search.page");
-
     @FindBy(xpath = "//input[@id='lst-ib']")
     private TextInput searchField;
 
@@ -19,6 +17,7 @@ public class SearchPage extends BasePage {
 
     public SearchPage() {
         super();
+        String searchPageAddress = PropertyLoader.loadProperty("google.search.page");
         url = searchPageAddress;
     }
 

@@ -15,6 +15,8 @@ public class AllureTestListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult result) {
+        String testName = result.getName();
+        makeScreenshot(testName);
     }
 
     @Override

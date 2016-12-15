@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExamplePage extends BasePage {
-    private String examplePageAddress = PropertyLoader.loadProperty("reactjs.page.json");
 
     @FindBy(xpath = "//div[@class='fixedDataTableLayout_main public_fixedDataTable_main']")
     private ReactJSTable table;
 
     public ExamplePage() {
         super();
+        String examplePageAddress = PropertyLoader.loadProperty("reactjs.page.json");
         url = examplePageAddress;
     }
 

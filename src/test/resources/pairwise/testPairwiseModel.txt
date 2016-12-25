@@ -1,0 +1,13 @@
+M       25-35   EMEA
+M       18-25   APAC
+NA      18-25   US
+F       18-25   EMEA
+M       35-99   US
+NA      35-99   EMEA
+F       25-35   APAC
+F       35-99   APAC
+F       25-35   Antarctida
+F       25-35   US
+NA      18-25   Antarctida
+M       35-99   Antarctida
+NA      25-35   APAC

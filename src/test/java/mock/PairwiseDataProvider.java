@@ -7,9 +7,9 @@ import java.util.Iterator;
 
 public class PairwiseDataProvider {
 
-    @DataProvider(name = "pairwiseDataSet1")
-    public static Iterator<Object[]> pairwiseDataSet1() {
-        PairwiseFile file = new PairwiseFile("pairwise/testPairwiseModel.txt");
+    @DataProvider(name = "pairwiseDataSetAgeSexLocation")
+    public static Iterator<Object[]> pairwiseDataSetAgeSexLocation() {
+        PairwiseFile file = new PairwiseFile("pairwise/testPairwiseModelAgeSexLocation.txt");
         return file.iterator();
     }
 }

@@ -3,10 +3,12 @@ package general.utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
 public class WebDriverEventListenerForAngular implements WebDriverEventListener {
-
 
     @Override
     public void beforeNavigateTo(String url, WebDriver driver) {
@@ -75,7 +77,10 @@ public class WebDriverEventListenerForAngular implements WebDriverEventListener 
 
     @Override
     public void afterChangeValueOf(WebElement element, WebDriver driver) {
-
+        LogEntries logEntries = Driver.getInstance().getDriver().manage().logs().get(LogType.BROWSER);
+        for (LogEntry logEntry : logEntries) {
+            System.out.println("Browser log - " + logEntry.getMessage());
+        }
     }
 
     @Override

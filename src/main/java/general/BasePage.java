@@ -6,7 +6,11 @@ import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementLocatorFactory;
 
+import java.util.logging.Logger;
+
 public abstract class BasePage {
+
+    public static Logger logger = Logger.getLogger("PageLogger");
 
     protected String url;
 

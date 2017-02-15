@@ -31,8 +31,7 @@ public class TranslatePage extends BasePage {
 
     public TranslatePage() {
         super();
-        String translatorPage = PropertyLoader.loadProperty("google.translator.page");
-        url = translatorPage;
+        url = PropertyLoader.loadProperty("google.translator.page");
     }
 
     @Step

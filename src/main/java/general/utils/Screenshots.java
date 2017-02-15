@@ -14,11 +14,11 @@ public class Screenshots {
     public static byte[] makeScreenshot(String testName) {
         try {
             BufferedImage image = new AShot().takeScreenshot(Driver.getInstance().getDriver()).getImage();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(image, "png", baos);
-            baos.flush();
-            byte[] imageInByte = baos.toByteArray();
-            baos.close();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(image, "png", byteArrayOutputStream);
+            byteArrayOutputStream.flush();
+            byte[] imageInByte = byteArrayOutputStream.toByteArray();
+            byteArrayOutputStream.close();
             return imageInByte;
         } catch (IOException e) {
             e.printStackTrace();

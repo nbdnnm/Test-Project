@@ -9,6 +9,7 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 public class ExamplePage extends BasePage {
 
@@ -17,8 +18,7 @@ public class ExamplePage extends BasePage {
 
     public ExamplePage() {
         super();
-        String examplePageAddress = PropertyLoader.loadProperty("reactjs.page.json");
-        url = examplePageAddress;
+        url = PropertyLoader.loadProperty("reactjs.page.json");
     }
 
     @Step
@@ -45,7 +45,8 @@ public class ExamplePage extends BasePage {
         List<List<WebElement>> rows = table.getRows();
         for (List<WebElement> row : rows) {
             for (WebElement cell : row) {
-                System.out.print(cell.getText() + "\t");
+                logger.log(Level.INFO, cell.getText() + "\t");
+                //System.out.print(cell.getText() + "\t");
             }
             System.out.print("\n");
         }

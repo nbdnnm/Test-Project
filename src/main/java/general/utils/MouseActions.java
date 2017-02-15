@@ -34,4 +34,8 @@ public class MouseActions {
                 .build().perform();
     }
 
+    public void mouseOverElement(WebElement element) {
+        builder.moveToElement(element).build().perform();
+    }
+
 }

@@ -1,0 +1,4 @@
+#This model would be used for pairwise generation by PICT (pairwise independent combinatorial tool)
+Sex: M, F, NA
+Age: 18-25, 25-35, 35-99
+Location: US, EMEA, APAC, Antarctida

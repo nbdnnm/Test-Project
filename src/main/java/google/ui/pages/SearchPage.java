@@ -2,41 +2,40 @@ package google.ui.pages;
 
 import general.BasePage;
 import general.utils.PropertyLoader;
+import google.ui.blocks.SearchField;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 
 public class SearchPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='lst-ib']")
-    private TextInput searchField;
+    private SearchField searchField;
 
     @FindBy(id = "gb_70")
     private Button signInButton;
 
     public SearchPage() {
         super();
-        String searchPageAddress = PropertyLoader.loadProperty("google.search.page");
-        url = searchPageAddress;
+        url = PropertyLoader.loadProperty("google.search.page");
     }
 
 
     @Step
     public SearchPage inputSearch(String searchText) {
-        searchField.sendKeys(searchText);
+        searchField.input(searchText);
         return this;
     }
 
     @Step
     public SearchPage submitSearch() {
-        searchField.submit();
+        searchField.submitSearch();
         return this;
     }
 
     @Step
     public SearchPage clearSearch() {
-        searchField.clear();
+        searchField.clearSearch();
         return this;
     }
 

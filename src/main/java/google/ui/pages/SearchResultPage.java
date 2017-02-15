@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-//search page with results
 public class SearchResultPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='rc']")

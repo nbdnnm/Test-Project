@@ -6,11 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import ru.stqa.selenium.factory.WebDriverPool;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 public class Driver {
 
@@ -22,7 +26,7 @@ public class Driver {
     private final long driverImplicitWait = Long.parseLong(PropertyLoader.loadProperty("driverImplicitWait"));
     private final String isAngularApp = PropertyLoader.loadProperty("isAngularApp");
     private final String chromeDriverPath = PropertyLoader.loadProperty("chromeDriverPath");
-    private WebDriver driver;
+    private WebDriver currentDriver;
     private NgWebDriver ngWebDriver;
 
     private Driver() {
@@ -37,7 +41,11 @@ public class Driver {
     }
 
     private void setDriverParameters() {
+        LoggingPreferences logs = new LoggingPreferences();
+        logs.enable(LogType.BROWSER, Level.SEVERE);
+
         DesiredCapabilities capabilities;
+
         switch (driverType) {
             case "chrome":
                 capabilities = DesiredCapabilities.chrome();
@@ -61,25 +69,26 @@ public class Driver {
                 capabilities = DesiredCapabilities.chrome();
                 break;
         }
+        capabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
         if (driverMode.equals("remote")) {
-            driver = WebDriverPool.DEFAULT.getDriver(hubAddress, capabilities);
+            currentDriver = WebDriverPool.DEFAULT.getDriver(hubAddress, capabilities);
         } else {
-            driver = WebDriverPool.DEFAULT.getDriver(capabilities);
+            currentDriver = WebDriverPool.DEFAULT.getDriver(capabilities);
         }
 
         if ("true".equals(isAngularApp)) {
             ngWebDriver = new NgWebDriver((JavascriptExecutor) WebDriverPool.DEFAULT.getDriver(capabilities));
-            EventFiringWebDriver eDriver = new EventFiringWebDriver(driver);
+            EventFiringWebDriver eDriver = new EventFiringWebDriver(currentDriver);
             WebDriverEventListenerForAngular webDriverEventListenerForAngular = new WebDriverEventListenerForAngular();
             eDriver.register(webDriverEventListenerForAngular);
-            driver = eDriver;
+            currentDriver = eDriver;
         }
-        driver.manage().timeouts().implicitlyWait(driverImplicitWait, TimeUnit.SECONDS);
+        currentDriver.manage().timeouts().implicitlyWait(driverImplicitWait, TimeUnit.SECONDS);
 
     }
 
     public WebDriver getDriver() {
-        return driver;
+        return currentDriver;
     }
 
     public void waitForAngular() {

@@ -1,0 +1,29 @@
+This project contains different ideas on organisation of test automation.
+Everything is in alpha version :)
+
+main/java/resources/application.properties has configuration for webdriver and different tests dependent properties.
+
+main/java/general folder has common elements such as:
+ BasePage which is a template for any web page
+ Utils folder with
+    Driver singleton for webdriver management
+    MouseActions
+    Property loader
+    Screenshot maker
+    Webdriver listener for Angular apps (necessary for autotests synchronization with asynchronous UI)
+
+main/*.ui have page objects (folder pages) with page elements (folder blocks) implementation
+Page elements (blocks) such as menu, table, checkbox set would be reused on different pages
+
+test/java/general has:
+    Allure listener for visual report generation, after test execution would be created through maven site:site,
+    report will be in target/site/allure-maven-report
+    BaseTest is a template for all test classes
+    PairwiseFile is a parser for a space/tab separated file which create iterator for TestNG dataprovider
+    then it would be used for DDT with pairwose combinatorial approach. Example see in test/java/mock folder
+
+test/java/gwtests contains GraphWalker model-based testing examples, model for that is placed in
+test/resources/gwtests and can be opened by yEd graph visualisation tool
+
+BEFORE EXECUTION:
+Before execution you may need to execute maven goal graphwalker:generate-test-sources which will add necessary interfaces into target/generated-test-sources/graphwalker

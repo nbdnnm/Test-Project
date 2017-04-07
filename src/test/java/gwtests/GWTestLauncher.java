@@ -1,7 +1,7 @@
 package gwtests;
 
 import general.AllureTestListener;
-import google.TestTranslator;
+import google.test.GoogleTranslatorImpl;
 import org.graphwalker.java.test.Result;
 import org.graphwalker.java.test.TestExecutor;
 import org.testng.annotations.Listeners;
@@ -23,7 +23,7 @@ public class GWTestLauncher extends BaseGWTestLauncher {
 
     @Test
     public void launchTranslatorTest() {
-        executor = new TestExecutor(new TestTranslator().getClass());
+        executor = new TestExecutor(new GoogleTranslatorImpl().getClass());
         Result result = executor.execute();
         System.out.println("Done: [" + result.getResults().toString(2) + "]");
         checkTestResult();

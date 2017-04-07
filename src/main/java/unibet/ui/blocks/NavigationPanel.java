@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextInput;
-import unibet.ui.pages.SearchPage;
+import unibet.ui.pages.SearchWebPage;
 
 public class NavigationPanel extends HtmlElement {
 
@@ -24,9 +24,9 @@ public class NavigationPanel extends HtmlElement {
         return this;
     }
 
-    public SearchPage inputSearch(String searchString) {
+    public SearchWebPage inputSearch(String searchString) {
         searchField.sendKeys(searchString);
         searchButton.click();
-        return new SearchPage();
+        return new SearchWebPage();
     }
 }

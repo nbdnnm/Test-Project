@@ -1,6 +1,6 @@
 package google.ui.blocks;
 
-import google.ui.pages.TranslatePage;
+import google.ui.pages.TranslateWebPage;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.Link;
@@ -32,9 +32,9 @@ public class GoogleApps extends HtmlElement {
     private Link translate;
 
 
-    public TranslatePage openTranslate() {
+    public TranslateWebPage openTranslate() {
         translate.click();
-        return new TranslatePage();
+        return new TranslateWebPage();
     }
 
 

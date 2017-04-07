@@ -4,7 +4,7 @@
     <test name="Google">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="google.TestSearch"/>
+            <class name="google.test.SearchWebTest"/>
         </classes>
     </test>
 </suite>

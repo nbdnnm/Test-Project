@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -10,13 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-test-sources/graphwalker" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/graphwalker" isTestSource="false" generated="true" />
-      <excludeFolder url="file://$MODULE_DIR$/target/allure-results" />
-      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
-      <excludeFolder url="file://$MODULE_DIR$/target/graphwalker-reports" />
-      <excludeFolder url="file://$MODULE_DIR$/target/maven-status" />
-      <excludeFolder url="file://$MODULE_DIR$/target/site" />
-      <excludeFolder url="file://$MODULE_DIR$/target/surefire" />
-      <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -65,10 +59,12 @@
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.8" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" name="Maven: ru.stqa.selenium:webdriver-factory:3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.testng:testng:6.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.9.9" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.ant:ant:1.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.ant:ant-launcher:1.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.htmlelements:htmlelements-all:1.17" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.htmlelements:htmlelements-java:1.17" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.htmlelements:htmlelements-matchers:1.17" level="project" />
@@ -98,6 +94,7 @@
     <orderEntry type="library" name="Maven: net.sf.flexjson:flexjson:2.1" level="project" />
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.19" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.jexcelapi:jxl:2.6.12" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.14" level="project" />
     <orderEntry type="library" name="Maven: asm:asm:3.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.fluentlenium:fluentlenium-core:0.10.2" level="project" />
     <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
@@ -171,16 +168,5 @@
     <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:3.0.3" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.epam.jdi:jdi-uitest-web:1.0.39" level="project" />
-    <orderEntry type="library" name="Maven: com.saucelabs:sauce_junit:2.1.19" level="project" />
-    <orderEntry type="library" name="Maven: com.saucelabs:sauce_java_common:2.1.19" level="project" />
-    <orderEntry type="library" name="Maven: com.saucelabs:saucerest:1.0.22" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
-    <orderEntry type="library" name="Maven: com.epam.jdi:jdi-uitest-core:1.0.39" level="project" />
-    <orderEntry type="library" name="Maven: com.epam.jdi:jdi-commons:1.0.39" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.13" level="project" />
-    <orderEntry type="library" name="Maven: com.epam.jdi:jdi-matchers:1.0.39" level="project" />
-    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
-    <orderEntry type="library" name="Maven: net.lingala.zip4j:zip4j:1.3.2" level="project" />
   </component>
 </module>

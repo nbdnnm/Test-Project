@@ -20,10 +20,10 @@ test/java/general has:
     report will be in target/site/allure-maven-report
     BaseTest is a template for all test classes
     PairwiseFile is a parser for a space/tab separated file which create iterator for TestNG dataprovider
-    then it would be used for DDT with pairwise combinatorial approach. Example see in test/java/mock folder
+    then it would be used for DDT with pairwise combinatorial approach. Example see in test/java/miscellaneous folder
 
-test/java/gwtests contains GraphWalker model-based testing examples, model for that is placed in
-test/resources/gwtests and can be opened by yEd graph visualisation tool
+test/java/graphwalker contains GraphWalker model-based testing examples, model for that is placed in
+test/resources/graphwalker and can be opened by yEd graph visualisation tool
 
 BEFORE EXECUTION:
 Before execution you may need to execute maven goal graphwalker:generate-test-sources which will add necessary interfaces into target/generated-test-sources/graphwalker

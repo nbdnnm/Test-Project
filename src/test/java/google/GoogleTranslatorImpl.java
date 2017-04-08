@@ -1,9 +1,9 @@
-package google.test;
+package google;
 
-import google.test.testData.TranslatorTestData;
+import google.testData.TranslatorTestData;
 import google.ui.pages.TranslateWebPage;
 import googleRes.GoogleTranslator;
-import gwtests.BaseExecutionContext;
+import graphwalker.BaseExecutionContext;
 import org.graphwalker.java.annotation.GraphWalker;
 import org.testng.Assert;
 

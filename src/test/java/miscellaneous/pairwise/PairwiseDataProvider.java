@@ -1,4 +1,4 @@
-package mock;
+package miscellaneous.pairwise;
 
 import general.PairwiseFile;
 import org.testng.annotations.DataProvider;

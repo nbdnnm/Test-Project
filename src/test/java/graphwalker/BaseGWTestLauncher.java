@@ -1,4 +1,4 @@
-package gwtests;
+package graphwalker;
 
 import org.graphwalker.core.machine.ExecutionStatus;
 import org.graphwalker.java.test.Executor;

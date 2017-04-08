@@ -1,4 +1,4 @@
-package mock;
+package miscellaneous.pairwise;
 
 
 import org.testng.annotations.Test;

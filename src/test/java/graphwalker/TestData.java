@@ -1,4 +1,4 @@
-package gwtests;
+package graphwalker;
 
 import java.util.Arrays;
 import java.util.List;

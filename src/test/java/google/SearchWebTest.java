@@ -1,10 +1,10 @@
-package google.test;
+package google;
 
 import general.AllureTestListener;
 import general.BaseWebTest;
-import google.test.testData.SearchTestData;
-import google.ui.pages.SearchWebPage;
+import google.testData.SearchTestData;
 import google.ui.pages.SearchResultWebPage;
+import google.ui.pages.SearchWebPage;
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;

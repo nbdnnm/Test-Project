@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
@@ -13,6 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import ru.stqa.selenium.factory.WebDriverPool;
 
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -69,7 +72,6 @@ public class Driver {
                 capabilities = DesiredCapabilities.chrome();
                 break;
         }
-        capabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
         if (driverMode.equals("remote")) {
             currentDriver = WebDriverPool.DEFAULT.getDriver(hubAddress, capabilities);
         } else {
@@ -83,6 +85,7 @@ public class Driver {
             eDriver.register(webDriverEventListenerForAngular);
             currentDriver = eDriver;
         }
+        capabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
         currentDriver.manage().timeouts().implicitlyWait(driverImplicitWait, TimeUnit.SECONDS);
 
     }
@@ -93,5 +96,12 @@ public class Driver {
 
     public void waitForAngular() {
         ngWebDriver.waitForAngularRequestsToFinish();
+    }
+
+    public void printBrowserLogs() {
+        LogEntries logEntries = getDriver().manage().logs().get(LogType.BROWSER);
+        for (LogEntry entry : logEntries) {
+            System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+        }
     }
 }
